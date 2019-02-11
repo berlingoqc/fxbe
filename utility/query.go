@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"reflect"
 	"strconv"
+	"strings"
 )
 
 type UnsupportedTypeError struct {
@@ -71,7 +72,7 @@ func QueryToStruct(q map[string][]string, t interface{}) error {
 	for i := 0; i < typeT.NumField(); i++ {
 		ft := typeT.Field(i)
 		fv := values.Field(i)
-		if elems, ok := q[ft.Name]; ok {
+		if elems, ok := q[strings.ToLower(ft.Name)]; ok {
 			if fv.Type().Kind() == reflect.Array {
 
 			} else {

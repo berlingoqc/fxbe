@@ -1,7 +1,6 @@
 package api
 
 import (
-	"io"
 	"net/http"
 	"os"
 	"path"
@@ -37,13 +36,8 @@ func PostFilesHandler(w http.ResponseWriter, r *http.Request) {
 		utility.RespondWithError(w, http.StatusBadRequest, err)
 		return
 	}
-	saved, err := os.Create(fullPath)
-	if err != nil {
-		utility.RespondWithError(w, http.StatusBadRequest, err)
-		return
-	}
 
-	_, err = io.Copy(saved, file)
+	err = files.UploadFile(fullPath, file)
 	if err != nil {
 		utility.RespondWithError(w, http.StatusInternalServerError, err)
 		return

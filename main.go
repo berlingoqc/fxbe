@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"git.wquintal.ca/berlingoqc/fxbe/api"
 	"git.wquintal.ca/berlingoqc/fxbe/auth"
 	"git.wquintal.ca/berlingoqc/fxbe/files"
@@ -23,6 +25,6 @@ func main() {
 		return d
 	}
 
-	api.Context[files.RootKey] = "/var/share"
+	api.Context[files.RootKey] = os.Getenv("HOME")
 	api.StartWebServer()
 }

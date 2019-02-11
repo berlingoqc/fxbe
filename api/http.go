@@ -77,7 +77,6 @@ func GetFilesHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		http.ServeContent(w, r, s.Name(), time.Now(), f)
-		http.ServeFile(w, r, fullPath)
 
 	} else {
 		utility.RespondWithError(w, http.StatusBadRequest, err)
@@ -89,7 +88,7 @@ func GetFilesHandler(w http.ResponseWriter, r *http.Request) {
 func AddFileRoute(r *mux.Router) {
 	srf := r.PathPrefix("/files/").Subrouter()
 	srf.Methods("GET").HandlerFunc(GetFilesHandler)
-	srf.PathPrefix("/files/").Methods("POST").HandlerFunc(PostFilesHandler)
+	srf.Methods("POST").HandlerFunc(PostFilesHandler)
 	srf.Use(auth.MiddlewareFile)
 }
 

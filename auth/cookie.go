@@ -38,7 +38,6 @@ func SetCookieForUser(w http.ResponseWriter, user *User) error {
 func DecodeCookieForUser(r *http.Request) (*User, error) {
 	var e error
 	if cookie, e := r.Cookie(authCookieName); e == nil {
-		print("lol")
 		u := &User{}
 		return u, secureCookie.Decode(authCookieName, cookie.Value, &u)
 	}

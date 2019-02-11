@@ -5,8 +5,6 @@ import (
 	"path"
 	"path/filepath"
 	"time"
-
-	"github.com/spf13/afero"
 )
 
 // ContextKey are the key use for the context parameter inside the Context
@@ -27,7 +25,6 @@ func (r Ctx) GetRoot() string {
 
 // FileInfo describes a file.
 type FileInfo struct {
-	Fs        afero.Fs    `json:"-"`
 	Path      string      `json:"path"`
 	Name      string      `json:"name"`
 	Size      int64       `json:"size"`

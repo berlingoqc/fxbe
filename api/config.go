@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 )
 
+var Version string
+
 // Config is the structure for the configuration of the api
 type Config struct {
 	Bind string `json:"bind"`

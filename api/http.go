@@ -91,18 +91,3 @@ func AddAccountRoute(r *mux.Router) {
 	ar := r.PathPrefix("/auth").Subrouter()
 	ar.HandleFunc("/", auth.GetLoginHandler)
 }
-
-// StartWebServer start the web server
-func StartWebServer() {
-	r := mux.NewRouter()
-	AddFileRoute(r)
-	AddAccountRoute(r)
-
-	srv := &http.Server{
-		Addr:    "0.0.0.0:8080",
-		Handler: r,
-	}
-	if err := srv.ListenAndServe(); err != nil {
-		panic(err)
-	}
-}

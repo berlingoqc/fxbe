@@ -1,7 +1,9 @@
 package utility
 
 import (
+	"encoding/json"
 	"fmt"
+	"net/http"
 	"reflect"
 	"strconv"
 	"strings"
@@ -90,4 +92,10 @@ func QueryToStruct(q map[string][]string, t interface{}) error {
 		}
 	}
 	return nil
+}
+
+// ParsePostBody ...
+func ParsePostBody(r *http.Request, t interface{}) error {
+	decoder := json.NewDecoder(r.Body)
+	return decoder.Decode(t)
 }

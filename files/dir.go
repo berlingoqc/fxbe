@@ -35,3 +35,15 @@ func IsDirectoryEmpty(direc string) error {
 	}
 	return errors.New(direc + " is not empty")
 }
+
+// EnsureFolderExists ensure that all folder given exists ( created if not)
+func EnsureFolderExists(folders []string) error {
+	for _, f := range folders {
+		err := os.MkdirAll(f, 0744)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}

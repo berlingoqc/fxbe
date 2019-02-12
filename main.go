@@ -1,14 +1,22 @@
 package main
 
 import (
-	"os"
+	"flag"
 
 	"github.com/berlingoqc/fxbe/api"
 	"github.com/berlingoqc/fxbe/auth"
-	"github.com/berlingoqc/fxbe/files"
 )
 
 func main() {
+	var configfile string
+
+	flag.StringVar(&configfile, "config", "", "the configuration file")
+	flag.Parse()
+
+	config, err := api.LoadConfig(configfile)
+	if err != nil {
+		panic(err)
+	}
 
 	auth.GetIAuth = func() auth.IAuth {
 		d := &auth.DumpAuth{
@@ -25,6 +33,6 @@ func main() {
 		return d
 	}
 
-	api.Context[files.RootKey] = os.Getenv("HOME")
-	api.StartWebServer()
+	ws, _ := api.GetWebServer(config)
+	ws.Start()
 }

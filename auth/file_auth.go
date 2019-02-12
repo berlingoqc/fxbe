@@ -3,7 +3,7 @@ package auth
 import (
 	"net/http"
 
-	"git.wquintal.ca/berlingoqc/fxbe/utility"
+	"github.com/berlingoqc/fxbe/utility"
 )
 
 type LoginModel struct {

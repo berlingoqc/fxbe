@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"git.wquintal.ca/berlingoqc/fxbe/auth"
+	"github.com/berlingoqc/fxbe/auth"
 
-	"git.wquintal.ca/berlingoqc/fxbe/files"
-	"git.wquintal.ca/berlingoqc/fxbe/utility"
+	"github.com/berlingoqc/fxbe/files"
+	"github.com/berlingoqc/fxbe/utility"
 
 	"github.com/gorilla/mux"
 )

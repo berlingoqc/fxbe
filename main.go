@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 
-	"git.wquintal.ca/berlingoqc/fxbe/api"
-	"git.wquintal.ca/berlingoqc/fxbe/auth"
-	"git.wquintal.ca/berlingoqc/fxbe/files"
+	"github.com/berlingoqc/fxbe/api"
+	"github.com/berlingoqc/fxbe/auth"
+	"github.com/berlingoqc/fxbe/files"
 )
 
 func main() {
